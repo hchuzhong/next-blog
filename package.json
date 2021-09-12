@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently \"next dev\" \"babel -w ./src --out-dir dist --extensions .ts,.tsx\"",
     "build": "next build",
     "start": "next start",
     "typeorm:build": "babel -w ./src --out-dir dist --extensions .ts,.tsx",
@@ -32,6 +32,7 @@
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
     "@types/ua-parser-js": "^0.7.33",
+    "concurrently": "^6.2.1",
     "next-images": "^1.4.0",
     "typescript": "^3.9.2"
   }
