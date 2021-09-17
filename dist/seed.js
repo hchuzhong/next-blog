@@ -16,10 +16,9 @@ var _typeorm = require("typeorm");
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            console.log(connection);
             connection.close();
 
-          case 2:
+          case 1:
           case "end":
             return _context.stop();
         }
