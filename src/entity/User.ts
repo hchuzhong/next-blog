@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, OneToOne, Prim
 import { Comment } from "./Comment";
 import { Post } from "./Post";
 
-@Entity()
+@Entity('users')
 export class User {
     @PrimaryGeneratedColumn('increment')
     id: number;
