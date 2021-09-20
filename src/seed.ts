@@ -18,19 +18,11 @@ createConnection().then(async connection => {
     p1.author = u1;
     await manager.save(p1);
     // creat comment
-    const c1 = new Comment()
+    const c1 = new Comment();
     c1.user = u1;
     c1.post = p1;
-    c1.content = 'Awesome!'
+    c1.content = 'Awesome!';
     await manager.save(c1);
-
-    console.log('---');
-    console.log(u1);
-    console.log(u1.id);
-    console.log(p1);
-    console.log(p1.id);
-    console.log(c1);
-    console.log(c1.id);
-
-    connection.close()
+    connection.close();
+    console.log('seed.ts run success!')
 }).catch(error => console.log(error));

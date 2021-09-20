@@ -50,16 +50,10 @@ var _Comment = require("./entity/Comment");
             return manager.save(c1);
 
           case 18:
-            console.log('---');
-            console.log(u1);
-            console.log(u1.id);
-            console.log(p1);
-            console.log(p1.id);
-            console.log(c1);
-            console.log(c1.id);
             connection.close();
+            console.log('seed.ts run success!');
 
-          case 26:
+          case 20:
           case "end":
             return _context.stop();
         }
