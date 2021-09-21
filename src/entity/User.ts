@@ -1,7 +1,9 @@
 import { getDatabaseConnection } from "lib/getDatabaseConnection";
-import { Column, CreateDateColumn, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from "typeorm";
+import md5 from "md5";
+import { BeforeInsert, Column, CreateDateColumn, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from "typeorm";
 import { Comment } from "./Comment";
 import { Post } from "./Post";
+import _ from "lodash";
 
 @Entity('users')
 export class User {
@@ -41,8 +43,6 @@ export class User {
             this.errors.username.push("用户名太短");
         }
         const found = await (await getDatabaseConnection()).manager.find(User, { username: this.username });
-        console.log('found');
-        console.log(found);
         if (found.length !== 0) {
             this.errors.username.push("用户名已存在，不能重复注册");
         }
@@ -54,8 +54,18 @@ export class User {
             this.errors.passwordConfirmation.push("密码不匹配");
         }
     }
+
     hasErrors() {
         return !!Object.values(this.errors).find((value) => value.length > 0);
+    }
+
+    @BeforeInsert()
+    generatePasswordDigest() {
+        this.passwordDigest = md5(this.password);
+    }
+
+    toJSON() {
+        return _.omit(this, ['password', 'passwordConfirmation', 'passwordDigest', 'errors']);
     }
 
 }
