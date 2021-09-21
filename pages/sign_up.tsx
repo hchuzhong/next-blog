@@ -16,13 +16,9 @@ const SignUp: NextPage = () => {
   const onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      console.log("---");
-      console.log(formData);
       axios.post(`/api/v1/users`, formData).then(
         () => {},
         (error) => {
-          console.log("axios error---");
-          console.log(error.response);
           if (error.response) {
             const response: AxiosResponse = error.response;
             if (response.status === 422) {

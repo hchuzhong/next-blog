@@ -7,15 +7,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.User = void 0;
 
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+
 var _initializerDefineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/initializerDefineProperty"));
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 
 var _applyDecoratedDescriptor2 = _interopRequireDefault(require("@babel/runtime/helpers/applyDecoratedDescriptor"));
 
 var _initializerWarningHelper2 = _interopRequireDefault(require("@babel/runtime/helpers/initializerWarningHelper"));
+
+var _getDatabaseConnection = require("lib/getDatabaseConnection");
 
 var _typeorm = require("typeorm");
 
@@ -33,16 +41,100 @@ var User = (_dec = (0, _typeorm.Entity)('users'), _dec2 = (0, _typeorm.PrimaryGe
   return _Comment.Comment;
 }, function (comment) {
   return comment.user;
-}), _dec(_class = (_class2 = (_temp = function User() {
-  (0, _classCallCheck2["default"])(this, User);
-  (0, _initializerDefineProperty2["default"])(this, "id", _descriptor, this);
-  (0, _initializerDefineProperty2["default"])(this, "username", _descriptor2, this);
-  (0, _initializerDefineProperty2["default"])(this, "passwordDigest", _descriptor3, this);
-  (0, _initializerDefineProperty2["default"])(this, "createdAt", _descriptor4, this);
-  (0, _initializerDefineProperty2["default"])(this, "updatedAt", _descriptor5, this);
-  (0, _initializerDefineProperty2["default"])(this, "posts", _descriptor6, this);
-  (0, _initializerDefineProperty2["default"])(this, "comments", _descriptor7, this);
-}, _temp), (_descriptor = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "id", [_dec2], {
+}), _dec(_class = (_class2 = (_temp = /*#__PURE__*/function () {
+  function User() {
+    (0, _classCallCheck2["default"])(this, User);
+    (0, _initializerDefineProperty2["default"])(this, "id", _descriptor, this);
+    (0, _initializerDefineProperty2["default"])(this, "username", _descriptor2, this);
+    (0, _initializerDefineProperty2["default"])(this, "passwordDigest", _descriptor3, this);
+    (0, _initializerDefineProperty2["default"])(this, "createdAt", _descriptor4, this);
+    (0, _initializerDefineProperty2["default"])(this, "updatedAt", _descriptor5, this);
+    (0, _initializerDefineProperty2["default"])(this, "posts", _descriptor6, this);
+    (0, _initializerDefineProperty2["default"])(this, "comments", _descriptor7, this);
+    (0, _defineProperty2["default"])(this, "errors", {
+      username: [],
+      password: [],
+      passwordConfirmation: []
+    });
+    (0, _defineProperty2["default"])(this, "password", void 0);
+    (0, _defineProperty2["default"])(this, "passwordConfirmation", void 0);
+  }
+
+  (0, _createClass2["default"])(User, [{
+    key: "validate",
+    value: function () {
+      var _validate = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
+        var found;
+        return _regenerator["default"].wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (this.username === "") {
+                  this.errors.username.push("用户名不能为空");
+                }
+
+                if (!/[a-zA-Z0-9]/.test(this.username)) {
+                  this.errors.username.push("用户名有非法字符");
+                }
+
+                if (this.username.length > 42) {
+                  this.errors.username.push("用户名太长");
+                }
+
+                if (this.username.length < 3) {
+                  this.errors.username.push("用户名太短");
+                }
+
+                _context.next = 6;
+                return (0, _getDatabaseConnection.getDatabaseConnection)();
+
+              case 6:
+                _context.next = 8;
+                return _context.sent.manager.find(User, {
+                  username: this.username
+                });
+
+              case 8:
+                found = _context.sent;
+                console.log('found');
+                console.log(found);
+
+                if (found.length !== 0) {
+                  this.errors.username.push("用户名已存在，不能重复注册");
+                }
+
+                if (this.password === "") {
+                  this.errors.password.push("密码不能为空");
+                }
+
+                if (this.password !== this.passwordConfirmation) {
+                  this.errors.passwordConfirmation.push("密码不匹配");
+                }
+
+              case 14:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function validate() {
+        return _validate.apply(this, arguments);
+      }
+
+      return validate;
+    }()
+  }, {
+    key: "hasErrors",
+    value: function hasErrors() {
+      return !!Object.values(this.errors).find(function (value) {
+        return value.length > 0;
+      });
+    }
+  }]);
+  return User;
+}(), _temp), (_descriptor = (0, _applyDecoratedDescriptor2["default"])(_class2.prototype, "id", [_dec2], {
   configurable: true,
   enumerable: true,
   writable: true,
