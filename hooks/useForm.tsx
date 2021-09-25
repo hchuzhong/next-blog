@@ -1,3 +1,4 @@
+import { AxiosResponse } from "axios";
 import { ChangeEventHandler, ReactChild, useCallback, useState } from "react";
 
 type Field<T> = {
@@ -10,11 +11,14 @@ type useFormOptions<T> = {
   initFormData: T;
   fields: Field<T>[];
   buttons: ReactChild;
-  onSubmit: (fd: T) => void;
+  submit: {
+    request: (formData: T) => Promise<AxiosResponse<T>>;
+    message: string;
+  };
 };
 
 export function useForm<T>(options: useFormOptions<T>) {
-  const { initFormData, fields, buttons, onSubmit } = options;
+  const { initFormData, fields, buttons, submit } = options;
   const [formData, setFormData] = useState(initFormData);
   const [errors, setErrors] = useState(() => {
     const e: { [k in keyof T]?: string[] } = {};
@@ -37,9 +41,21 @@ export function useForm<T>(options: useFormOptions<T>) {
   const _onSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      onSubmit(formData);
+      submit.request(formData).then(
+        () => {
+          window.alert(submit.message);
+        },
+        (error) => {
+          if (error.response) {
+            const response: AxiosResponse = error.response;
+            if (response.status === 422) {
+              setErrors(response.data);
+            }
+          }
+        }
+      );
     },
-    [onSubmit, formData]
+    [submit, formData]
   );
   const form = (
     <form onSubmit={_onSubmit}>
@@ -69,6 +85,5 @@ export function useForm<T>(options: useFormOptions<T>) {
   );
   return {
     form,
-    setErrors,
   };
 }
