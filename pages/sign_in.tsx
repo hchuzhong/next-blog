@@ -1,75 +1,51 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
-import { Form } from "components/Form";
+import axios, { AxiosResponse } from "axios";
+import { useForm } from "hooks/useForm";
 import { withSession } from "lib/withSession";
 import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
-import { useCallback, useState } from "react";
 import { User } from "src/entity/User";
 
 const SignIn: NextPage<{ user: User }> = (props) => {
-  const [formData, setFormData] = useState({
+  const initFormData = {
     username: "",
     password: "",
-  });
-  const [errors, setErrors] = useState({
-    username: [] as string[],
-    password: [] as string[],
-  });
-  const onSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      axios.post(`/api/v1/sessions`, formData).then(
-        () => {
-          window.alert("登录成功");
-        },
-        (error) => {
-          if (error.response) {
-            const response: AxiosResponse = error.response;
-            if (response.status === 422) {
-              setErrors(response.data);
-            }
+  };
+  const onSubmit = (formData: typeof initFormData) => {
+    axios.post(`/api/v1/sessions`, formData).then(
+      () => {
+        window.alert("登录成功");
+      },
+      (error) => {
+        if (error.response) {
+          const response: AxiosResponse = error.response;
+          if (response.status === 422) {
+            setErrors(response.data);
           }
         }
-      );
-    },
-    [formData]
-  );
-  const onChange = useCallback(
-    (key, value) => {
-      setFormData({
-        ...formData,
-        [key]: value,
-      });
-    },
-    [formData]
-  );
+      }
+    );
+  };
+  const { form, setErrors } = useForm({
+    initFormData,
+    onSubmit,
+    fields: [
+      {
+        label: "用户名",
+        type: "text",
+        key: "username",
+      },
+      {
+        label: "密码",
+        type: "password",
+        key: "password",
+      },
+    ],
+    buttons: <button type="submit">登录</button>,
+  });
   return (
     <>
       {props.user && <div>当前登录用户为 {props.user.username}</div>}
       <h1>登录</h1>
-      <Form
-        fields={[
-          {
-            label: "用户名",
-            type: "text",
-            value: formData.username,
-            onChange: (e) => onChange("username", e.target.value),
-            errors: errors.username,
-          },
-          {
-            label: "密码",
-            type: "password",
-            value: formData.password,
-            onChange: (e) => onChange("password", e.target.value),
-            errors: errors.password,
-          },
-        ]}
-        onSubmit={onSubmit}
-        buttons={
-          <>
-            <button type="submit">登录</button>
-          </>
-        }
-      />
+      {form}
     </>
   );
 };
