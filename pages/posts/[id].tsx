@@ -23,8 +23,6 @@ export const getServerSideProps: GetServerSideProps<any, { id: string }> =
   async (context) => {
     const connection = await getDatabaseConnection();
     const post = await connection.manager.findOne(Post, context.params.id);
-    console.log("---");
-    console.log(post);
     return {
       props: {
         post: JSON.parse(JSON.stringify(post)),

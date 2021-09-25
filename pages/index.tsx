@@ -9,8 +9,6 @@ type Props = {
 };
 const index: NextPage<Props> = (props) => {
   const { posts } = props;
-  console.log("------");
-  console.log(posts);
   return (
     <div>
       <h1>文章列表</h1>

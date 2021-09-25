@@ -1,7 +1,5 @@
-import { getDatabaseConnection } from "lib/getDatabaseConnection";
-import md5 from "md5";
+import { withSession } from "lib/withSession";
 import { NextApiHandler } from "next";
-import { User } from "src/entity/User";
 import { SignIn } from "src/model/signIn";
 
 const Sessions: NextApiHandler = async (req, res) => {
@@ -16,28 +14,10 @@ const Sessions: NextApiHandler = async (req, res) => {
     res.statusCode = 422;
     res.end(JSON.stringify(signIn.errors));
   } else {
+    req.session.set("currentUser", signIn.user);
+    await req.session.save();
     res.statusCode = 200;
     res.end(JSON.stringify(signIn.user));
   }
-
-  // const connection = getDatabaseConnection();
-  // const user = await (
-  //   await connection
-  // ).manager.findOne(User, { where: { username } });
-
-  // if (user) {
-  //   console.log(user);
-  //   const passwordDigest = md5(password);
-  //   if (user.passwordDigest === passwordDigest) {
-  //     res.statusCode = 200;
-  //     res.end(JSON.stringify(user));
-  //   } else {
-  //     res.statusCode = 422;
-  //     res.end(JSON.stringify({ password: ["密码不匹配"] }));
-  //   }
-  // } else {
-  //   res.statusCode = 422;
-  //   res.end(JSON.stringify({ username: ["用户名不存在"] }));
-  // }
 };
-export default Sessions;
+export default withSession(Sessions);
