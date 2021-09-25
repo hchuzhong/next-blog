@@ -49,3 +49,4 @@ yarn build
 yarn start
 ```
 
+### session 所用 SECRET 需要自己本地新建一个 .env.local 文件然后在里面声明 SECRET=32位数字
