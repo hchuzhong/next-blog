@@ -21,13 +21,11 @@
     "next": "9.4.1",
     "next-iron-session": "^4.2.0",
     "pg": "^8.7.1",
-    "query-string": "^7.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "reflect-metadata": "^0.1.13",
     "sass": "^1.26.5",
-    "typeorm": "^0.2.37",
-    "ua-parser-js": "^0.7.21"
+    "typeorm": "^0.2.37"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.15.4",
@@ -38,7 +36,6 @@
     "@types/node": "^16.7.13",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@types/ua-parser-js": "^0.7.33",
     "concurrently": "^6.2.1",
     "next-images": "^1.4.0",
     "typescript": "^3.9.2"
