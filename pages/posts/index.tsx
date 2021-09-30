@@ -12,7 +12,7 @@ type Props = {
   totalPage: number;
 };
 const PostsIndex: NextPage<Props> = (props) => {
-  const { posts, count, perPage, page, totalPage } = props;
+  const { posts, page, totalPage } = props;
   const { pager } = usePager({ page, totalPage });
   return (
     <div>

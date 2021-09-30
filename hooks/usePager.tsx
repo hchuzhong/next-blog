@@ -35,9 +35,9 @@ export const usePager = (options: Options) => {
       )}
       {pageNumbers.map((n) =>
         n === -1 ? (
-          <span>...</span>
+          <span key={n}>...</span>
         ) : (
-          <Link href={urlMaker(n)}>
+          <Link href={urlMaker(n)} key={n}>
             <a>{n}</a>
           </Link>
         )
