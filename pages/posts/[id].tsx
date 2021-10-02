@@ -1,5 +1,4 @@
 import React from "react";
-import { getPost, getPostIds } from "../../lib/posts";
 import { GetServerSideProps, NextPage } from "next";
 import { getDatabaseConnection } from "lib/getDatabaseConnection";
 import { Post } from "src/entity/Post";
