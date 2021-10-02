@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const index = context.req.url.indexOf("?");
   const paramString = new URLSearchParams(context.req.url.substr(index + 1));
   const page = parseInt(paramString.get("page")) || 1;
-  const perPage = 1;
+  const perPage = 10;
   const connection = await getDatabaseConnection();
   const [posts, count] = await connection.manager.findAndCount(Post, {
     skip: (page - 1) * perPage,
