@@ -29,10 +29,11 @@ const PostsEdit: NextPage<Props> = (props) => {
       </div>
     ),
     submit: {
-      request: (formData) => axios.patch(`/api/v1/posts/${id}`, formData),
+      request: (formData) =>
+        axios.patch(`/api/v1/posts/${id}`, { ...formData, id }),
       success: () => {
         window.alert("提交成功");
-        window.location.href = "/posts";
+        // window.location.href = "/posts";
       },
     },
   });
