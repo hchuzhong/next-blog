@@ -1268,11 +1268,6 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/ua-parser-js@^0.7.33":
-  version "0.7.33"
-  resolved "https://registry.npm.taobao.org/@types/ua-parser-js/download/@types/ua-parser-js-0.7.33.tgz#4a92089511574e12928a7cb6b99a01831acd1dd7"
-  integrity sha1-SpIIlRFXThKSiny2uZoBgxrNHdc=
-
 "@types/zen-observable@0.8.3":
   version "0.8.3"
   resolved "https://registry.nlark.com/@types/zen-observable/download/@types/zen-observable-0.8.3.tgz?cache=0&sync_timestamp=1629709862630&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fzen-observable%2Fdownload%2F%40types%2Fzen-observable-0.8.3.tgz#781d360c282436494b32fe7d9f7f8e64b3118aa3"
@@ -3059,11 +3054,6 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-filter-obj@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.nlark.com/filter-obj/download/filter-obj-1.1.0.tgz?cache=0&sync_timestamp=1630004180503&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ffilter-obj%2Fdownload%2Ffilter-obj-1.1.0.tgz#9b311112bc6c6127a16e016c6c5d7f19e0805c5b"
-  integrity sha1-mzERErxsYSehbgFsbF1/GeCAXFs=
-
 find-cache-dir@3.3.1:
   version "3.3.1"
   resolved "https://registry.npm.taobao.org/find-cache-dir/download/find-cache-dir-3.3.1.tgz?cache=0&sync_timestamp=1583734806517&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffind-cache-dir%2Fdownload%2Ffind-cache-dir-3.3.1.tgz#89b33fad4a4670daa94f855f7fbe31d6d84fe880"
@@ -3224,6 +3214,11 @@ get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
   resolved "https://registry.npm.taobao.org/get-value/download/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
+
+github-markdown-css@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.nlark.com/github-markdown-css/download/github-markdown-css-4.0.0.tgz#be9f4caf7a389228d4c368336260ffc909061f35"
+  integrity sha1-vp9Mr3o4kijUw2gzYmD/yQkGHzU=
 
 glob-parent@^3.1.0:
   version "3.1.0"
@@ -5339,16 +5334,6 @@ query-string@^4.1.0:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
-query-string@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.nlark.com/query-string/download/query-string-7.0.1.tgz?cache=0&sync_timestamp=1624297034221&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fquery-string%2Fdownload%2Fquery-string-7.0.1.tgz#45bd149cf586aaa582dffc7ec7a8ad97dd02f75d"
-  integrity sha1-Rb0UnPWGqqWC3/x+x6itl90C910=
-  dependencies:
-    decode-uri-component "^0.2.0"
-    filter-obj "^1.1.0"
-    split-on-first "^1.0.0"
-    strict-uri-encode "^2.0.0"
-
 querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://registry.npm.taobao.org/querystring-es3/download/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
@@ -5909,11 +5894,6 @@ spdx-license-ids@^3.0.0:
   resolved "https://registry.nlark.com/spdx-license-ids/download/spdx-license-ids-3.0.10.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fspdx-license-ids%2Fdownload%2Fspdx-license-ids-3.0.10.tgz#0d9becccde7003d6c658d487dd48a32f0bf3014b"
   integrity sha1-DZvszN5wA9bGWNSH3UijLwvzAUs=
 
-split-on-first@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.nlark.com/split-on-first/download/split-on-first-1.1.0.tgz#f610afeee3b12bce1d0c30425e76398b78249a5f"
-  integrity sha1-9hCv7uOxK84dDDBCXnY5i3gkml8=
-
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/split-string/download/split-string-3.1.0.tgz#7cb09dda3a86585705c64b39a6466038682e8fe2"
@@ -6004,11 +5984,6 @@ strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/strict-uri-encode/download/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
-
-strict-uri-encode@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npm.taobao.org/strict-uri-encode/download/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
-  integrity sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
 
 string-hash@1.1.3:
   version "1.1.3"
@@ -6394,11 +6369,6 @@ typescript@^3.9.2:
   version "3.9.2"
   resolved "https://registry.npm.taobao.org/typescript/download/typescript-3.9.2.tgz?cache=0&sync_timestamp=1589872592973&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftypescript%2Fdownload%2Ftypescript-3.9.2.tgz#64e9c8e9be6ea583c54607677dd4680a1cf35db9"
   integrity sha1-ZOnI6b5upYPFRgdnfdRoChzzXbk=
-
-ua-parser-js@^0.7.21:
-  version "0.7.21"
-  resolved "https://registry.npm.taobao.org/ua-parser-js/download/ua-parser-js-0.7.21.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fua-parser-js%2Fdownload%2Fua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
-  integrity sha1-hTz5zpP2QvZxdCc8w0Vlrm8wh3c=
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
