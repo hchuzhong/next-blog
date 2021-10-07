@@ -28,7 +28,7 @@ const SignIn: NextPage<{ user: User }> = (props) => {
       success: () => {
         window.alert("登录成功");
         const paramString = new URLSearchParams(window.location.search);
-        const query = paramString.get("returnTo");
+        const query = paramString.get("returnTo") || "/";
         window.location.href = query;
       },
     },
