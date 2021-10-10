@@ -2,8 +2,8 @@ docker start 361 &&
 cd /home/blog/app &&
 git pull &&
 yarn install --production=false &&
-yarn build &&
 git apply migrate.patch &&
+yarn build &&
 yarn m:run &&
 git reset --hard HEAD &&
 docker kill app &&
