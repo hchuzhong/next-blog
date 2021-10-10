@@ -44,14 +44,8 @@ npm run dev
 
 ## 部署
 ```bash
- ssh blog@dev1 'sh /home/blog/app/bin/deploy.sh'
-```
-
-```bash 
-yarn install --production=false
-yarn build
-docker build -t hcz/node-web-app .
-docker run --network=host -p 3000:3000 -d hcz/node-web-app
+git push
+ssh blog@dev1 'bash -s' < bin/deploy.sh
 ```
 
 ### session 所用 SECRET 需要自己本地新建一个 .env.local 文件然后在里面声明 SECRET=32位数字
