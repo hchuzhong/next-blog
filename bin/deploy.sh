@@ -2,8 +2,8 @@ docker start 361 &&
 cd /home/blog/app &&
 git pull &&
 yarn install --production=false &&
-git apply migrate.patch;
 yarn build &&
+git apply migrate.patch;
 yarn compile &&
 yarn m:run &&
 git reset --hard HEAD &&
