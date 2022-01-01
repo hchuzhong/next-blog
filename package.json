@@ -1,0 +1,48 @@
+{
+  "name": "nextjs-blog-1",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"next dev\" \"yarn compile:watch\"",
+    "compile:watch": "babel -w ./src --out-dir dist --extensions .ts,.tsx",
+    "compile": "babel ./src --out-dir dist --extensions .ts,.tsx",
+    "build": "next build",
+    "start": "next start",
+    "m:create": "typeorm migration:create",
+    "m:run": "typeorm migration:run",
+    "m:revert": "typeorm migration:revert",
+    "e:create": "typeorm entity:create"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.15.4",
+    "axios": "^0.19.2",
+    "classnames": "^2.3.1",
+    "github-markdown-css": "^4.0.0",
+    "gray-matter": "^4.0.2",
+    "lodash": "^4.17.21",
+    "marked": "^1.1.0",
+    "md5": "^2.3.0",
+    "next": "9.4.1",
+    "next-iron-session": "^4.2.0",
+    "pg": "^8.7.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "reflect-metadata": "^0.1.13",
+    "sass": "^1.26.5",
+    "typeorm": "^0.2.37"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.15.4",
+    "@types/axios": "^0.14.0",
+    "@types/classnames": "^2.3.1",
+    "@types/lodash": "^4.14.173",
+    "@types/marked": "^0.7.4",
+    "@types/md5": "^2.3.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "concurrently": "^6.2.1",
+    "next-images": "^1.4.0",
+    "typescript": "^3.9.2"
+  }
+}
